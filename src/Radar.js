@@ -101,7 +101,29 @@ export default class RadarChart extends Component
       function onLabelPress() {
         textStyle.onLabelPress(keys[i], keys_value[`${keys[i]}`]);
       }
-
+        var font0 = p[0];
+        var font1 = p[1];
+        
+        switch(i) {
+          case 0:
+            // code block
+            p[1] = p[1]+20;
+            font1 = font1+15;
+            break;
+        case 1:
+             font1 = font1-5;   
+            break;
+        case 2:        
+            // code block
+            p[1] = p[1]-15;
+            break;       
+        case 3:
+            font1 = font1-5;   
+            break;        
+          default:
+            // code block
+        }
+        
       return (
               <G key={'label' + i}>
                   <Line x1={p[0]} y1={p[1]} x2={center[0]} y2={center[1]} stroke={colors.stroke} strokeOpacity={colors.strokeOpacity}/>
@@ -112,7 +134,7 @@ export default class RadarChart extends Component
                       fontStyle={textStyle.fontStyle}
                       fill={textStyle.fill}
                       onPress={onLabelPress}
-                      textAnchor="middle" x={Math.floor(p[0])} y={Math.floor(p[1])}>{keys[i]}
+                      textAnchor="middle" x={Math.floor(font0)} y={Math.floor(font1)}>{keys[i]}
                   </Text>
               </G>
             )
